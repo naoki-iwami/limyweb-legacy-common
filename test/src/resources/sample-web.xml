@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+  
+  <session-config>
+    <session-timeout>300</session-timeout>
+  </session-config>
+
+  <context-param>
+    <param-name>init-key1</param-name>
+    <param-value>init-value1</param-value>
+  </context-param>
+  <context-param>
+    <param-name>init-key2</param-name>
+    <param-value>500</param-value>
+  </context-param>
+  <context-param>
+    <param-name>init-key3</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>init-key4</param-name>
+    <param-value>false</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>Dummy</servlet-name>
+    <servlet-class>org.limy.common.web.DummyServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Dummy</servlet-name>
+    <url-pattern>/dummy</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

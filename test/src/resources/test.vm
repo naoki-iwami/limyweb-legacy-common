@@ -1,0 +1,27 @@
+
+#set ($total = 0)
+#set ($count = 0)
+
+$Util.avg($total, $count, 2)
+
+#set ($total = 10)
+$Util.avg($total, $count, 2)
+
+#set ($strs = ["1", "2", "3", "2"])
+
+
+#set ($names = $Util.getGroupSet($javancss.packages, "name"))
+
+#foreach ($name in $names)
+$name
+#end
+
+#set ($names = $Util.sortAsc($Util.getGroupSet($javancss.packages, "name")))
+#foreach ($name in $names)
+$name
+#end
+
+#set ($names = $Util.sortDesc($Util.getGroupSet($javancss.packages, "name")))
+#foreach ($name in $names)
+$name
+#end

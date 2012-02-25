@@ -1,0 +1,41 @@
+<project name="limyweb-common" default="makejar">
+
+	<property file="${basedir}/build.properties"/>
+
+	<target name="init">
+		<mkdir dir="dest"/>
+		<mkdir dir="dist"/>
+	</target>
+	<target name="makejar" depends="init">
+		<jar destfile="dist/limyweb-common.jar">
+			<fileset dir="bin"></fileset>
+		</jar>
+	</target>
+
+	<target name="makezip" depends="init">
+		<zip destfile="dist/limyweb-common-src.zip">
+			<zipfileset dir="." prefix="limyweb-common">
+				<include name="COPYING"/>
+				<include name="COPYRIGHT"/>
+				<include name="src/**"/>
+				<include name="test/src/**"/>
+				<include name="build.xml"/>
+			</zipfileset>
+		</zip>
+	</target>
+
+	<target name="upload-src" depends="makezip, makejar">
+		<ftp server="${remote.host}" userid="${remote.user}" password="${remote.pass}"
+				remotedir="${upload.dest.dir}">
+			<fileset dir="dist" includes="*.zip, *.jar"></fileset>
+		</ftp>
+	</target>
+	
+	<target name="upload-report">
+		<ftp server="${remote.host}" userid="${remote.user}" password="${remote.pass}"
+				remotedir="${upload.dest.dir}/common">
+			<fileset dir="dest"></fileset>
+		</ftp>
+	</target>
+	
+</project>
